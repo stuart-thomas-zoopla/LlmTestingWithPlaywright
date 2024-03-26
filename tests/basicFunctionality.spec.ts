@@ -1,5 +1,5 @@
 import { test } from '@playwright/test';
-import { expectOk, checkResponseIncludes } from '../helpers/assertions';
+import { expectOk, checkResponseIncludesPhrase } from '../helpers/assertions';
 const singleGenerate = '/api/generate'
 const model = 'llama2'
 const stream = false
@@ -15,7 +15,7 @@ test('Validate basic functionality', async ({ request }) => {
 
   expectOk(response);
   const responseBody = await response.json();
-  checkResponseIncludes(responseBody, ["Hello"]);
+  checkResponseIncludesPhrase(responseBody, ["Hello"]);
 });
 
 test('Validate response content accuracy for prompt: Why is the sky blue?', async ({ request }) => {
@@ -29,10 +29,9 @@ test('Validate response content accuracy for prompt: Why is the sky blue?', asyn
 
   expectOk(response);
   const responseBody = await response.json();
-  checkResponseIncludes(responseBody, ["Rayleigh scattering"]);
+  checkResponseIncludesPhrase(responseBody, ["Rayleigh scattering"]);
 });
 
-//This test will fail as the response includes a forbidden word.
 test('Validate cannot be tricked into using a forbidden word', async ({ request }) => {
   const response = await request.post(singleGenerate, {
     data: {
@@ -44,5 +43,5 @@ test('Validate cannot be tricked into using a forbidden word', async ({ request 
 
   expectOk(response);
   const responseBody = await response.json();
-  checkResponseIncludes(responseBody, ["I cannot provide a definition"]);
+  checkResponseIncludesPhrase(responseBody, ["I cannot provide a definition"]);
 });
