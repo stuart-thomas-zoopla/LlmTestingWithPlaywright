@@ -1,5 +1,5 @@
 import { test } from '@playwright/test';
-import { expectOk, checkResponseIncludesPhrase } from '../helpers/assertions';
+import { expectOk, checkResponseIncludes } from '../helpers/assertions';
 import { validateReponseWithEvaluator } from '../helpers/evaluatorLlm';
 const singleGenerate = '/api/generate'
 const model = 'llama2'
@@ -20,7 +20,7 @@ test('Validate response content accuracy for prompt: Why is the sky blue?', asyn
 
     expectOk(response);
     const responseBody = await response.json();
-    checkResponseIncludesPhrase(responseBody, "Rayleigh scattering");
+    checkResponseIncludes(responseBody, ["Rayleigh scattering"]);
      
     await validateReponseWithEvaluator(request, responseBody, expectedWords);
 });

@@ -1,4 +1,4 @@
-import { checkResponseIncludesPhrase } from '../helpers/assertions';
+import { checkResponseIncludes } from '../helpers/assertions';
 const singleGenerate = '/api/generate'
 const model = 'llama2'
 const stream = false
@@ -14,7 +14,7 @@ async function validateReponseWithEvaluator(request, response, expectedWords) {
     });
 
     const evaluatorAnswer = await evaluatorResponse.json();
-    checkResponseIncludesPhrase(evaluatorAnswer, "Yes, the statements are similar");
+    checkResponseIncludes(evaluatorAnswer, ["Yes, the statements are similar"]);
 }
 
 export { validateReponseWithEvaluator };
