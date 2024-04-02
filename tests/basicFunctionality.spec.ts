@@ -32,6 +32,7 @@ test('Validate response content accuracy for prompt: Why is the sky blue?', asyn
   checkResponseIncludes(responseBody, ["Rayleigh scattering"]);
 });
 
+// Test will fail as response contains a forbidden word.
 test('Validate cannot be tricked into using a forbidden word', async ({ request }) => {
   const response = await request.post(singleGenerate, {
     data: {
