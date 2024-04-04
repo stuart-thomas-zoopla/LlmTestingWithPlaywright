@@ -1,6 +1,6 @@
 import fs from 'fs';
 
-export function loadForbiddenWords(): string[] {
+function loadForbiddenWords(): string[] {
     try {
         const data = fs.readFileSync('./helpers/forbiddenWords.json', 'utf8');
         const { forbiddenWords } = JSON.parse(data);

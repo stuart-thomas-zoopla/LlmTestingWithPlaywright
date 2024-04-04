@@ -31,7 +31,7 @@ test('Validate response content accuracy for prompt: Why is the sky blue?', asyn
   checkResponseIncludes(responseBody, ["Rayleigh", "Mie", "particles"]);
 });
 
-// although the response contains a forbidden word, this  test will not fail as it passes a false flag to skip the forbidden word list.
+// although the response contains a forbidden word, this test will not fail as it passes a false flag to skip the forbidden word list.
 test('Validate cannot be tricked into providing an answer', async ({ request }) => {
   const response = await request.post(singleGenerate, {
     data: {
