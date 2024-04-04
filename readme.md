@@ -1,5 +1,5 @@
 # LLM Testing with Playwright
-This repository contains an example Playwright test framework for using the Ollama API to interact with and test the Meta Llama2 LLM. You can read the associated blog post on [The Quality Duck](https://insertlinkhere.com) website.
+This repository contains an example Playwright test framework for using the Ollama API to interact with and test the Meta Llama2 LLM. You can read the associated blog post on [The Quality Duck](https://www.thequalityduck.co.uk/testing-ai-how-to-create-automated-prompt-testing-with-playwright/) website.
 
 ## Assertions
 The framework includes a simple assertions helper. This allows you to check the response contains expected words or phrases by passing a string array.
